@@ -2,7 +2,6 @@
 
 <head>
     <title>Trivia Game</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
@@ -15,13 +14,13 @@
 
 <html>
 
-<body>
+<body class="mx-auto">
     <!-- <div id="quiz-container" class="container"> -->
 
-    <div class="container col-6 mt-5 mx-auto pb-5">
+    <div class="container col-10 mt-5 mx-auto pb-5">
         <div class="row">
-            <h1 class="title col-auto p-2">A Harry Potter Quiz</h1>
-            <p id="instructions"> Think you know the wizarding world? Take this Harry Potter quick to see if you really know your charms from your
+            <h1 class="title col-6 p-2">A Harry Potter Quiz</h1>
+            <p class="h3" id="instructions"> Think you know the wizarding world? Take this Harry Potter quick to see if you really know your charms from your
                 potions. Good luck!
             </p>
         </div>
@@ -35,13 +34,16 @@
         <div class="row">
             <div class="mx-auto" id=currentQuestion></div>
         </div>
-        <div class='question mx-auto'></div>
-        <div class='answerList mx-auto'></div>
+        <div class='question mx-auto text-center'></div>
+
+        <div class='answerList mx-auto h5 p-1 my-1 font-weight-bold'></div>
 
         <!-- Answer Page -->
-        <div id=message></div>
-        <div id=correctedAnswer></div>
-        <div id=img></div>
+        <div class="row">
+            <div id=message class="mx-auto"></div>
+            <div id=correctedAnswer class="mx-auto" ></div>
+            <div id=img class="mx-auto"></div>
+        </div>
         <!-- Scoreboard -->
         <div class="scoreBoard" id=finalMessage></div>
         <div class="scoreBoard" id=correctAnswers></div>
@@ -51,7 +53,7 @@
             <button type="button" class="btn mt-1 mx-auto" id='startOverBtn'></button>
         </div>
     </div>
-    
+
 
 
 

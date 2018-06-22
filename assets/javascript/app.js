@@ -111,7 +111,7 @@ $(".question").html('<h2>' + triviaQuestions[currentQuestion].question + "</h2>"
 // ==========================
 for (var i =0; i < 4; i++){
     //create choices divs for options to populate
-    var choices = $("<div>"); 
+    var choices = $("<div class='m-3'>"); 
     choices.text(triviaQuestions[currentQuestion].answerList[i]);
     choices.attr({'data-index': i });
     choices.addClass('thisChoice');

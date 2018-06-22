@@ -9,9 +9,8 @@ body {
 
 .title {
     font-family: 'Berkshire Swash', cursive;
-    color: black;
+    color: #f89c08;
     text-align: center;
-    font-size: 50px;
     margin: 5px auto; 
 }
 
@@ -21,18 +20,15 @@ body {
 }
 
 .question {
-    padding: 20px;
-    font-size: 30px;
     color: black;
     border-radius: 40px;
-    text-align: center;
+    font-family: 'Berkshire Swash', cursive;   
+
 }
 
 div.thisChoice {
-    margin: 15px auto; 
-    font-size: 18px;
     border-radius: 40px;
-    padding: 15px 250px;
+    padding: 15px 15px;
     text-align: center;
     background: rgb(255, 255, 255);
     font-weight: bold;
@@ -58,15 +54,9 @@ div.thisChoice {
 }
 
 h3 {
-    font-size: 25px; 
     font-weight: bold; 
     font-family: 'Berkshire Swash', cursive;
     color: black; 
-}
-
-#img {
-    margin: 5px auto; 
-    text-align: center; 
 }
 
 #instructions,
