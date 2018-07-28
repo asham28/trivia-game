@@ -6,6 +6,7 @@ Welcome to the Harry Potter Trivia Game! Answer all 10 questions before the time
 - CSS
 - JavaScript
 - jQuery
+- Bootstrap
 
 ## Prerequists 
 - jQuery: visit http://code.jquery.com/ and link in html
