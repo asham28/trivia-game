@@ -1,19 +1,17 @@
-
-
 //Question 
 var triviaQuestions = [{
     question: "Which of the following is not a Hogwarts House",
-    answerList: ["Gryffindor", "Hufflepuff","Slytherine","Thunderbird"],
+    answerList: ["Gryffindor", "Hufflepuff", "Slytherine", "Thunderbird"],
     answer: 3
-},{
+}, {
     question: "Among the wizarding community, the term 'Muggle' refers to what kind of person?",
-    answerList:["A non-magical person from a magical family", "A magical person who is really bad at magic", "A magical person with only one magical parent", "A non-magical person from a non-magical family"],
+    answerList: ["A non-magical person from a magical family", "A magical person who is really bad at magic", "A magical person with only one magical parent", "A non-magical person from a non-magical family"],
     answer: 3
-},{
+}, {
     question: "Which Hogwarts student stays 'I don't go looking for trouble. Trouble usually finds me'?",
     answerList: ["Draco Malfoy", "Harry Potter", "Ron Weasley", "Fred Weasley"],
     answer: 1
-},{
+}, {
     question: "What is the incantation for the Summoning Charm",
     answerList: ["Aparecium", "Avis", "Accio", "Anapneo"],
     answer: 2
@@ -41,114 +39,116 @@ var triviaQuestions = [{
     question: "What was the title of 6th Harry Potter book?",
     answerList: ["Harry Potter and the Prisoner of Azakaban", "Harry Potter and the Half-Blood Prince", "Harry Potter and the Order of the Phoenix", "Harry Potter and the Deathly Hallows"],
     answer: 1
-}]; 
+}];
 
 /*Need One More Question*/
 
-var img = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10' ]; 
-var currentQuestion; 
-var correctAnswer; 
-var incorrectAnswer; 
-var unanswered; 
-var seconds; 
-var time; 
-var answered; 
-var userSelect; 
+var img = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10'];
+var currentQuestion;
+var correctAnswer;
+var incorrectAnswer;
+var unanswered;
+var seconds;
+var time;
+var answered;
+var userSelect;
 
 // MESSAGES
 var messages = {
-    correct: "That's right!", 
-    incorrect: "Nope!", 
-    endTime: "Out of time!", 
+    correct: "That's right!",
+    incorrect: "Nope!",
+    endTime: "Out of time!",
     finished: "Alright! Time for the final score!"
 }
 
 
 $('#startOverBtn').hide();
 
-$("#startBtn").on('click', function(){
-$(this).hide(); 
-$("#instructions").hide();
-newGame(); 
-}); 
+$("#startBtn").on('click', function () {
+    $(this).hide();
+    $("#instructions").hide();
+    newGame();
+});
 
 function newGame() {
-    $('#finalMessage').empty(); 
-    $("#correctAnswers").empty(); 
-    $("#incorrectAnswers").empty(); 
-    $("#unanswered").empty(); 
+    $('#finalMessage').empty();
+    $("#correctAnswers").empty();
+    $("#incorrectAnswers").empty();
+    $("#unanswered").empty();
     $('#startOverBtn').hide();
-    currentQuestion = 0; 
-    correctAnswer = 0; 
-    incorrectAnswer = 0; 
-    unanswered = 0; 
-    newQuestion(); 
+    currentQuestion = 0;
+    correctAnswer = 0;
+    incorrectAnswer = 0;
+    unanswered = 0;
+    newQuestion();
 }
 
 // Reset
 
 
-$("#startOverBtn").on('click', function(){
-    $(this).hide(); 
-    newGame(); 
-    }); 
+$("#startOverBtn").on('click', function () {
+    $(this).hide();
+    newGame();
+});
 
-function newQuestion(){
-    $("#message").empty(); 
-    $("#correctedAnswer").empty(); 
-    $("#img").empty(); 
-    $(".thisChoice").hide(); 
-    answered = true; 
+function newQuestion() {
+    $("#message").empty();
+    $("#correctedAnswer").empty();
+    $("#img").empty();
+    $(".thisChoice").hide();
+    answered = true;
 
-// ===================================
-// New Question and Answers Populated
-// ====================================
-$("#currentQuestion").html("Question: " + (currentQuestion+1) + ' of ' + triviaQuestions.length); 
-$(".question").html('<h2>' + triviaQuestions[currentQuestion].question + "</h2>")
+    // ===================================
+    // New Question and Answers Populated
+    // ====================================
+    $("#currentQuestion").html("Question: " + (currentQuestion + 1) + ' of ' + triviaQuestions.length);
+    $(".question").html('<h2>' + triviaQuestions[currentQuestion].question + "</h2>")
 
-// ==========================
-// Logic Conditions 
-// ==========================
-for (var i =0; i < 4; i++){
-    //create choices divs for options to populate
-    var choices = $("<div class='m-3'>"); 
-    choices.text(triviaQuestions[currentQuestion].answerList[i]);
-    choices.attr({'data-index': i });
-    choices.addClass('thisChoice');
-    $('.answerList').append(choices);
-}
+    // ==========================
+    // Logic Conditions 
+    // ==========================
+    for (var i = 0; i < 4; i++) {
+        //create choices divs for options to populate
+        var choices = $("<div class='m-3'>");
+        choices.text(triviaQuestions[currentQuestion].answerList[i]);
+        choices.attr({
+            'data-index': i
+        });
+        choices.addClass('thisChoice');
+        $('.answerList').append(choices);
+    }
 
-countdown(); 
-// clicking an answer will pause the timer and setup answer page
-$(".thisChoice").on('click', function(){
-    userSelect = $(this).data("index"); 
-    clearInterval(time); 
-    answerPage(); 
+    countdown();
+    // clicking an answer will pause the timer and setup answer page
+    $(".thisChoice").on('click', function () {
+        userSelect = $(this).data("index");
+        clearInterval(time);
+        answerPage();
 
-}); 
+    });
 
 }
 
 // ================
 // COUNT DOWN TIMER 
 // ================
-function countdown(){
-	seconds = 15;
-	$('#timeLeft').html('<h3>Time Remaining: ' + seconds + ' seconds </h3>');
-	answered = true;
-	//sets timer to go down
-	time = setInterval(showCountdown, 1000);
+function countdown() {
+    seconds = 15;
+    $('#timeLeft').html('<h3>Time Remaining: ' + seconds + ' seconds </h3>');
+    answered = true;
+    //sets timer to go down
+    time = setInterval(showCountdown, 1000);
 }
 
 
-function showCountdown(){
-	seconds--;
-	$('#timeLeft').html('<h3>Time Remaining: ' + seconds + ' seconds </h3>');
-	if(seconds < 1){
-		clearInterval(time);
-		answered = false;
-		answerPage();
-	}
+function showCountdown() {
+    seconds--;
+    $('#timeLeft').html('<h3>Time Remaining: ' + seconds + ' seconds </h3>');
+    if (seconds < 1) {
+        clearInterval(time);
+        answered = false;
+        answerPage();
+    }
 }
 
 // ==============
@@ -156,56 +156,54 @@ function showCountdown(){
 // ==============
 function answerPage() {
     //clear page first 
-    $("#currentQuestion").empty(); 
-    $(".thisChoice").empty(); 
-    $(".answerList").empty(); 
-    $(".question").empty(); 
+    $("#currentQuestion").empty();
+    $(".thisChoice").empty();
+    $(".answerList").empty();
+    $(".question").empty();
 
 
-    var rightAnswerText = triviaQuestions[currentQuestion].answerList[triviaQuestions[currentQuestion].answer]; 
-    var rightAnswerIndex = triviaQuestions[currentQuestion].answer; 
+    var rightAnswerText = triviaQuestions[currentQuestion].answerList[triviaQuestions[currentQuestion].answer];
+    var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
 
-    $("#img").html("<img src= 'assets/images/" + img[currentQuestion] + ".jpg' width='400px'>"); 
+    $("#img").html("<img src= 'assets/images/" + img[currentQuestion] + ".jpg' width='400px'>");
 
 
 
     // LOGIC: CORRECT SCENARIO
     // ===========================
-    if((userSelect == rightAnswerIndex) && (answered == true)){
-		correctAnswer++;
-		$('#message').html(messages.correct);
-	} else if((userSelect != rightAnswerIndex) && (answered == true)){
-		incorrectAnswer++;
-		$('#message').html(messages.incorrect);
-		$('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
-	} else{
-		unanswered++;
-		$('#message').html(messages.endTime);
-		$('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
-		answered = true;
+    if ((userSelect == rightAnswerIndex) && (answered == true)) {
+        correctAnswer++;
+        $('#message').html(messages.correct);
+    } else if ((userSelect != rightAnswerIndex) && (answered == true)) {
+        incorrectAnswer++;
+        $('#message').html(messages.incorrect);
+        $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
+    } else {
+        unanswered++;
+        $('#message').html(messages.endTime);
+        $('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
+        answered = true;
     }
 
-    if (currentQuestion == (triviaQuestions.length-1)){
+    if (currentQuestion == (triviaQuestions.length - 1)) {
         setTimeout(scoreboard, 5000)
     } else {
-        currentQuestion++; 
-        setTimeout(newQuestion, 5000); 
+        currentQuestion++;
+        setTimeout(newQuestion, 5000);
     }
 }
 
-function scoreboard(){
-	$('#timeLeft').empty();
-	$('#message').empty();
-	$('#correctedAnswer').empty();
-	$('#img').empty();
+function scoreboard() {
+    $('#timeLeft').empty();
+    $('#message').empty();
+    $('#correctedAnswer').empty();
+    $('#img').empty();
 
-	$('#finalMessage').html("<h2>" + messages.finished + "</h2>");
-	$('#correctAnswers').html("Correct Answers: " + correctAnswer);
-	$('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
-	$('#unanswered').html("Unanswered: " + unanswered);
-	$('#startOverBtn').addClass('reset');
-	$('#startOverBtn').show();
-	$('#startOverBtn').html('Play Again?');
+    $('#finalMessage').html("<h2>" + messages.finished + "</h2>");
+    $('#correctAnswers').html("Correct Answers: " + correctAnswer);
+    $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
+    $('#unanswered').html("Unanswered: " + unanswered);
+    $('#startOverBtn').addClass('reset');
+    $('#startOverBtn').show();
+    $('#startOverBtn').html('Play Again?');
 }
-
-
